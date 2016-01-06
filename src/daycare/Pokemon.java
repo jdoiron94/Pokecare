@@ -5,16 +5,28 @@ public class Pokemon implements Comparable<Pokemon> {
     private final String name;
     private final Relation relation;
 
+    /**
+     * Constructs a Pokemon.
+     *
+     * @param name The Pokemon's name.
+     * @param relation The Pokemon's exp relation.
+     */
     public Pokemon(String name, Relation relation) {
         this.name = name;
         this.relation = relation;
     }
 
-    public String getName() {
+    /**
+     * @return The Pokemon's name.
+     */
+    public String name() {
         return name;
     }
 
-    public Relation getRelation() {
+    /**
+     * @return The Pokemon's relation.
+     */
+    public Relation relation() {
         return relation;
     }
 

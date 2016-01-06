@@ -12,6 +12,12 @@ public enum Encoding {
     private final String decoded;
     private final String encoded;
 
+    /**
+     * Constructs an encoding enum.
+     *
+     * @param decoded The decoding.
+     * @param encoded The encoding.
+     */
     Encoding(String decoded, String encoded) {
         this.decoded = decoded;
         this.encoded = encoded;

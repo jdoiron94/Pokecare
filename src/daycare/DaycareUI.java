@@ -63,7 +63,7 @@ public class DaycareUI extends JFrame {
         final JLabel laps = new JLabel("#### laps");
         System.out.print(Holder.binarySearch("Abra"));
         submit.addActionListener(event -> {
-            Relation relation = Holder.pokemon[Holder.binarySearch((String) pokemonList.getSelectedItem())].getRelation();
+            Relation relation = Holder.pokemon[Holder.binarySearch((String) pokemonList.getSelectedItem())].relation();
             int lapz = (relation.getExpTable()[(Integer) levelSpinner.getValue() - 1] - Integer.parseInt(experienceField.getText())) / Integer.parseInt(pathField.getText());
             laps.setText(NumberFormat.getInstance().format(lapz) + (lapz == 1 ? " lap" : " laps"));
         });

@@ -12,15 +12,27 @@ public enum Relation {
     private final int[] expTable;
     private final String name;
 
+    /**
+     * Constructs an exp relation.
+     *
+     * @param expTable The exp table for the relation.
+     * @param name The name of the relation.
+     */
     Relation(int[] expTable, String name) {
         this.expTable = expTable;
         this.name = name;
     }
 
+    /**
+     * @return The relation's exp table.
+     */
     public int[] getExpTable() {
         return expTable;
     }
 
+    /**
+     * @return The relation's name.
+     */
     public String getName() {
         return name;
     }

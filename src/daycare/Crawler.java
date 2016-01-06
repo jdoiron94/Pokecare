@@ -9,6 +9,11 @@ import java.util.TreeSet;
 
 public class Crawler {
 
+    /**
+     * Drives the crawling part.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String... args) {
         String base = "http://bulbapedia.bulbagarden.net/w/index.php?title=Category:Pok%C3%A9mon_in_the_";
         String end = "_experience_group";

@@ -8,10 +8,9 @@ import javax.swing.text.PlainDocument;
 
 public class IntegerField extends JTextField {
 
-    public IntegerField(int columns) {
-        super(columns);
-    }
-
+    /**
+     * Constructs an empty field for strictly integers.
+     */
     public IntegerField() {
     }
 
