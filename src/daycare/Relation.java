@@ -26,7 +26,7 @@ public enum Relation {
     /**
      * @return The relation's exp table.
      */
-    public int[] getExpTable() {
+    public int[] table() {
         return expTable;
     }
 

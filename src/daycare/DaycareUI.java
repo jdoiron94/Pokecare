@@ -10,7 +10,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -24,8 +23,8 @@ public class DaycareUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored) {
-            System.out.println("Could not load system look and feel");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         setLayout(new BorderLayout());
         Box left = Box.createVerticalBox();
@@ -58,13 +57,11 @@ public class DaycareUI extends JFrame {
         final IntegerField pathField = new IntegerField();
         add(pathField, right);
         right.add(Box.createVerticalGlue());
-        System.out.println(pathField);
         JButton submit = new JButton("Submit");
         final JLabel laps = new JLabel("#### laps");
-        System.out.print(Holder.binarySearch("Abra"));
         submit.addActionListener(event -> {
             Relation relation = Holder.pokemon[Holder.binarySearch((String) pokemonList.getSelectedItem())].relation();
-            int lapz = (relation.getExpTable()[(Integer) levelSpinner.getValue() - 1] - Integer.parseInt(experienceField.getText())) / Integer.parseInt(pathField.getText());
+            int lapz = (relation.table()[(Integer) levelSpinner.getValue() - 1] - Integer.parseInt(experienceField.getText())) / Integer.parseInt(pathField.getText());
             laps.setText(NumberFormat.getInstance().format(lapz) + (lapz == 1 ? " lap" : " laps"));
         });
         add(submit, left);
@@ -72,7 +69,6 @@ public class DaycareUI extends JFrame {
         add(left, BorderLayout.WEST);
         add(right, BorderLayout.EAST);
         pack();
-        System.out.println(getSize());
         setResizable(false);
         setLocationRelativeTo(null);
     }
