@@ -18,6 +18,9 @@ import java.text.NumberFormat;
 
 public class DaycareUI extends JFrame {
 
+    /**
+     * Constructs the UI for the application.
+     */
     public DaycareUI() {
         setTitle("Lappy");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -33,7 +36,7 @@ public class DaycareUI extends JFrame {
         left.add(Box.createVerticalGlue());
         add(pokemon, left);
         left.add(Box.createVerticalGlue());
-        final JComboBox<String> pokemonList = new JComboBox<>(Holder.pokemonNames);
+        final JComboBox<String> pokemonList = new JComboBox<>(DaycareAid.nameArray());
         right.add(Box.createVerticalGlue());
         add(pokemonList, right);
         right.add(Box.createVerticalGlue());
@@ -60,8 +63,11 @@ public class DaycareUI extends JFrame {
         JButton submit = new JButton("Submit");
         final JLabel laps = new JLabel("#### laps");
         submit.addActionListener(event -> {
-            Relation relation = Holder.pokemon[Holder.binarySearch((String) pokemonList.getSelectedItem())].relation();
-            int lapz = (relation.table()[(Integer) levelSpinner.getValue() - 1] - Integer.parseInt(experienceField.getText())) / Integer.parseInt(pathField.getText());
+            Relation relation = DaycareAid.get((String) pokemonList.getSelectedItem()).relation();
+            int lev = (Integer) levelSpinner.getValue();
+            int exp = Integer.parseInt(experienceField.getText());
+            int pathSize = Integer.parseInt(pathField.getText());
+            int lapz = relation == null ? -1 : (relation.table()[lev - 1] - exp) / pathSize;
             laps.setText(NumberFormat.getInstance().format(lapz) + (lapz == 1 ? " lap" : " laps"));
         });
         add(submit, left);
@@ -73,6 +79,12 @@ public class DaycareUI extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Adds a component to a specified container.
+     *
+     * @param component The component.
+     * @param container The container.
+     */
     private void add(JComponent component, Container container) {
         component.setPreferredSize(new Dimension(component.getPreferredSize().width, 20));
         container.add(component);

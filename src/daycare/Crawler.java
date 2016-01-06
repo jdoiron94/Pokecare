@@ -3,18 +3,15 @@ package daycare;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Crawler {
 
     /**
-     * Drives the crawling part.
-     *
-     * @param args Command line arguments.
+     * Crawls the web to discover new Pokemon.
      */
-    public static void main(String... args) {
+    public static void execute() {
         String base = "http://bulbapedia.bulbagarden.net/w/index.php?title=Category:Pok%C3%A9mon_in_the_";
         String end = "_experience_group";
         String[] suffixes = {"Erratic", "Fast", "Medium_Fast", "Medium_Fast", "Medium_Slow", "Slow", "Fluctuating"};
@@ -32,14 +29,14 @@ public class Crawler {
                             split = split.replaceAll(e.decoded(), e.encoded());
                         }
                         pokemon.add(new Pokemon(split, Relation.values()[index]));
+                        DaycareAid.add(split);
                     }
                 }
                 reader.close();
+                DaycareAid.addAll(pokemon);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Remote: " + pokemon.size() + ": " + Arrays.toString(pokemon.toArray()));
-        System.out.println("Local: " + Holder.pokemon.length);
     }
 }
