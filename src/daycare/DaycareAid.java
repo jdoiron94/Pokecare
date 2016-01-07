@@ -1,5 +1,8 @@
 package daycare;
 
+import daycare.util.OperatingSystem;
+
+import javax.swing.*;
 import java.awt.EventQueue;
 import java.util.Set;
 import java.util.TreeSet;
@@ -51,6 +54,15 @@ public class DaycareAid {
      */
     public static void main(String... args) {
         Crawler.execute();
+        if (OperatingSystem.getSystem() == OperatingSystem.MAC) {
+            System.setProperty("apple.laf.useScreenMenuBar", "true");
+        } else {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ignored) {
+                System.err.println("Could not set system look and feel.");
+            }
+        }
         EventQueue.invokeLater(() -> {
             DaycareUI ui = new DaycareUI();
             ui.setVisible(true);

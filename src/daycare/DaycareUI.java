@@ -24,11 +24,6 @@ public class DaycareUI extends JFrame {
     public DaycareUI() {
         setTitle("Lappy");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         setLayout(new BorderLayout());
         Box left = Box.createVerticalBox();
         Box right = Box.createVerticalBox();
