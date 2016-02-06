@@ -1,4 +1,7 @@
-package daycare;
+package daycare.util;
+
+import daycare.DaycareAid;
+import daycare.Pokemon;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

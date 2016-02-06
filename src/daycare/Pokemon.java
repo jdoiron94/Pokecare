@@ -1,5 +1,7 @@
 package daycare;
 
+import daycare.util.Relation;
+
 public class Pokemon implements Comparable<Pokemon> {
 
     private final String name;

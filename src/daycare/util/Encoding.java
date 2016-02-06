@@ -1,4 +1,4 @@
-package daycare;
+package daycare.util;
 
 /**
  * @author Jacob Doiron

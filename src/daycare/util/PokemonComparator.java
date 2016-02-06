@@ -1,4 +1,6 @@
-package daycare;
+package daycare.util;
+
+import daycare.Pokemon;
 
 import java.util.Comparator;
 

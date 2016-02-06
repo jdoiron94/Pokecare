@@ -1,4 +1,4 @@
-package daycare;
+package daycare.ui.util;
 
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
@@ -12,6 +12,15 @@ public class IntegerField extends JTextField {
      * Constructs an empty field for strictly integers.
      */
     public IntegerField() {
+    }
+
+    /**
+     * Constructs an empty field for numbers of a specific length.
+     *
+     * @param columns The maximum amount of numbers in the textfield.
+     */
+    public IntegerField(int columns) {
+        super(columns);
     }
 
     @Override
@@ -31,7 +40,9 @@ public class IntegerField extends JTextField {
                         return;
                     }
                 }
-                super.insertString(offset, string, set);
+                if (getLength() + string.length() <= getColumns()) {
+                    super.insertString(offset, string, set);
+                }
             }
         }
     }
